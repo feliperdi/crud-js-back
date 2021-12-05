@@ -1,0 +1,26 @@
+{
+  "name": "crud-didactic-octo-rotary",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "tsc && node ./build/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/feliperdi/crud-didactic-octo-rotary.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/feliperdi/crud-didactic-octo-rotary/issues"
+  },
+  "homepage": "https://github.com/feliperdi/crud-didactic-octo-rotary#readme",
+  "devDependencies": {
+    "jest": "^27.4.3"
+  },
+  "dependencies": {
+    "@types/jest": "^27.0.3"
+  }
+}
