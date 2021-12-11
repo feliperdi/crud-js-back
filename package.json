@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "tsc && node ./build/index.js"
+    "test": "jest",
+    "start": "node ./build/server.js"
   },
   "repository": {
     "type": "git",
@@ -18,9 +18,26 @@
   },
   "homepage": "https://github.com/feliperdi/crud-didactic-octo-rotary#readme",
   "devDependencies": {
-    "jest": "^27.4.3"
+    "@babel/preset-env": "^7.16.4",
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "jest": "^27.4.4",
+    "superagent": "^6.1.0",
+    "supertest": "^6.1.6"
   },
   "dependencies": {
-    "@types/jest": "^27.0.3"
+    "@babel/preset-typescript": "^7.16.0",
+    "@types/dotenv": "^8.2.0",
+    "@types/express": "^4.17.13",
+    "@types/jest": "^27.0.3",
+    "@types/knex": "^0.16.1",
+    "@types/node": "^16.11.12",
+    "@types/supertest": "^2.0.11",
+    "@types/uuid": "^8.3.3",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "knex": "^0.95.14",
+    "mysql": "^2.18.1",
+    "uuid": "^8.3.2"
   }
 }
