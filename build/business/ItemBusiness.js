@@ -34,7 +34,7 @@ class ItemBusiness {
         if (typeof item.b_price !== 'number')
             throw new ErrorModel_1.default('INVALID b_price', "b_price value required", ErrorModel_1.HttpCodes.BAD_REQUEST, false);
         if (typeof item.s_price !== 'number')
-            throw new ErrorModel_1.default('INVALID S_price', "s_price  value required", ErrorModel_1.HttpCodes.BAD_REQUEST, false);
+            throw new ErrorModel_1.default('INVALID S_price', "s_price value required", ErrorModel_1.HttpCodes.BAD_REQUEST, false);
         if (!item.category)
             throw new ErrorModel_1.default('INVALID category', "category required", ErrorModel_1.HttpCodes.BAD_REQUEST, false);
     }
