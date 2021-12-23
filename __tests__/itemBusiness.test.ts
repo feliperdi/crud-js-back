@@ -1,6 +1,6 @@
 import ItemBusiness from "../src/business/ItemBusiness";
 import ItemDb from "../src/database/ItemDb";
-import { category } from "../src/model/ItemModel";
+
 
 const itemBusiness = new ItemBusiness(new ItemDb());
 
@@ -9,7 +9,7 @@ const mockItemInput: any = {
     b_price: 12,
     s_price: 12,
     stock: 12,
-    category: category.ROUPAS,
+    category: "OTHERS",
     description: "Generic description"
 };
 
@@ -17,11 +17,12 @@ const mockItemInput: any = {
 jest.mock("../src/database/ItemDb", () => {
     return jest.fn().mockImplementation( () => {
         return {
-            getItens: () => [mockItemInput, mockItemInput],
+            getItems: () => [mockItemInput, mockItemInput],
             createItem: () => undefined
         }
     })
 });
+jest.mock("../src/database/CategoryDb")
 
 describe("Item business full test", () => {
 
@@ -53,34 +54,34 @@ describe("Errors tests", () => {
         }
     });
 
-    test("Should throw a error 'name invalid'", async () => {
+    test("Should throw a error 'b_price invalid'", async () => {
         try {
             alterItem = {...mockItemInput};
             alterItem.b_price = undefined;
 
             const itemsList = await itemBusiness.createItem(alterItem);
         } catch (error: any) {
-            expect(error.message).toBe('value required');
+            expect(error.message).toBe('b_price value required');
         }
     });
 
-    test("Should throw a error 'name invalid'", async () => {
+    test("Should throw a error 's_price invalid'", async () => {
         try {
             alterItem = {...mockItemInput};
             alterItem.s_price = undefined;
             const itemsList = await itemBusiness.createItem(alterItem);
         } catch (error: any) {
-            expect(error.message).toBe('value required');
+            expect(error.message).toBe('s_price value required');
         }
     });
 
-    test("Should throw a error 'name invalid'", async () => {
+    test("Should throw a error 'stock invalid'", async () => {
         try {
             alterItem = {...mockItemInput};
             alterItem.stock = undefined;
             const itemsList = await itemBusiness.createItem(alterItem);
         } catch (error: any) {
-            expect(error.message).toBe('value required');
+            expect(error.message).toBe('stock value required');
         }
     });
 

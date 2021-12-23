@@ -1,6 +1,6 @@
 import ItemDb from "../database/ItemDb";
 import ErrorModel, { HttpCodes } from "../model/ErrorModel";
-import ItemModel, { category, ItemInputDTO, ItemOutputDTO } from "../model/ItemModel";
+import ItemModel, { ItemInputDTO, ItemOutputDTO } from "../model/ItemModel";
 import IdHandle from "../services/Idhandle";
 
 
@@ -12,15 +12,15 @@ export default class ItemBusiness {
 
     private validateItemInputData(item: ItemInputDTO) {
         if(!item.name) throw new ErrorModel('INVALID name', "name required", HttpCodes.BAD_REQUEST, false);
-        if(!item.stock) throw new ErrorModel('INVALID stock', "value required", HttpCodes.BAD_REQUEST, false);
-        if(!item.b_price) throw new ErrorModel('INVALID b_price', "value required", HttpCodes.BAD_REQUEST, false);
-        if(!item.s_price) throw new ErrorModel('INVALID S_price', "value required", HttpCodes.BAD_REQUEST, false);
+        if(typeof item.stock !== 'number') throw new ErrorModel('INVALID stock', "stock value required", HttpCodes.BAD_REQUEST, false);
+        if(typeof item.b_price !== 'number') throw new ErrorModel('INVALID b_price', "b_price value required", HttpCodes.BAD_REQUEST, false);
+        if(typeof item.s_price !== 'number') throw new ErrorModel('INVALID S_price', "s_price value required", HttpCodes.BAD_REQUEST, false);
         if(!item.category) throw new ErrorModel('INVALID category', "category required", HttpCodes.BAD_REQUEST, false);
     };
 
     public async getItem(): Promise<any> {
         try {
-            return await this.db.getItens();
+            return await this.db.getItems();
         } catch(error) {
             throw error;
         }
@@ -36,12 +36,12 @@ export default class ItemBusiness {
                 item.b_price as number,
                 item.s_price as number,
                 item.stock as number,
-                item.category as category,
+                item.category as string,
                 item.description
             );
             
             await this.db.createItem(data);
-            const itemslist: ItemOutputDTO[] = await this.db.getItens();
+            const itemslist: ItemOutputDTO[] = await this.db.getItems();
             return itemslist;
             
         } catch( error ) {
@@ -52,9 +52,8 @@ export default class ItemBusiness {
     public async updateItem(item: ItemInputDTO): Promise<any> {
         try {
             if(!item.id) throw new ErrorModel("Invalid id", "Id not found", HttpCodes.BAD_REQUEST, false);
-            let itemArray = Object.entries(item);
-            let newItem = itemArray.map( (i) => i !== undefined );
-            await this.db.updateItem(newItem);
+            this.validateItemInputData(item);
+            await this.db.updateItem(item);
             return await this.getItem();            
         } catch(error) {
             throw error;

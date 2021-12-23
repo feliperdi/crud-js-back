@@ -1,7 +1,9 @@
 
 export enum HttpCodes {
-    INTERNAL_SERVER_ERROR = 500,
     BAD_REQUEST = 400,
+    NOT_AUTHORIZED = 401,
+    ALREADY_EXIST = 409,
+    INTERNAL_SERVER_ERROR = 500,
 } 
 
 export default class ErrorModel extends Error {

@@ -1,7 +1,3 @@
-export enum category {
-    ROUPAS = "ROUPAS",
-    ACESSORIOS = "ACESSORIOS",
-}
 
 export interface ItemInputDTO {
     id?: string;
@@ -9,7 +5,7 @@ export interface ItemInputDTO {
     stock?: number;
     b_price?: number;
     s_price?: number;
-    category?: category;
+    category?: string;
     description?: string;
 };
 
@@ -19,7 +15,7 @@ export interface ItemOutputDTO {
     stock?: number;
     b_price?: number;
     s_price?: number;
-    category?: category;
+    category?: string;
     description?: string;
 }
 
@@ -30,7 +26,7 @@ export default class ItemModel {
     private b_price: number;
     private s_price: number;
     private stock: number;
-    private category: category;
+    private category: string;
     private description?: string;
 
     constructor(
@@ -39,7 +35,7 @@ export default class ItemModel {
         b_price: number,
         s_price: number,
         stock: number,
-        category: category,
+        category: string,
         description?: string,
     ){
         this.id = id;
@@ -76,7 +72,7 @@ export default class ItemModel {
         this.description = description;
     };
 
-    setCategory( category: category ){
+    setCategory( category: string ){
         this.category = category;
     };
 
@@ -105,7 +101,7 @@ export default class ItemModel {
         return this.description;
     }
 
-    getCategory(): category {
+    getCategory(): string {
         return this.category;
     }
 

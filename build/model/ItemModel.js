@@ -1,10 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var category;
-(function (category) {
-    category["ROUPAS"] = "ROUPAS";
-    category["ACESSORIOS"] = "ACESSORIOS";
-})(category = exports.category || (exports.category = {}));
 ;
 class ItemModel {
     constructor(id, name, b_price, s_price, stock, category, description) {

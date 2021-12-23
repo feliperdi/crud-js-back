@@ -21,28 +21,34 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const ErrorModel_1 = __importStar(require("../model/ErrorModel"));
 const BaseDb_1 = __importDefault(require("./BaseDb"));
-class ItemDb extends BaseDb_1.default {
+class CategoryDb extends BaseDb_1.default {
     constructor() {
         super(...arguments);
-        this.table = "itens";
+        this.table = "category";
     }
-    createItem(item) {
+    getCategory() {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                yield this.getConnection()
-                    .insert({
-                    id: item.getId(),
-                    name: item.getName(),
-                    description: item.getDescription(),
-                    stock: item.getStock(),
-                    s_price: item.getSPrice(),
-                    b_price: item.getBPrice(),
-                    category: item.getCategory()
-                }).into(this.table);
+                const raw = yield this.getConnection().select("*").into(this.table);
+                return raw;
             }
             catch (error) {
-                if (error.errno === 1452)
-                    throw new ErrorModel_1.default("Invalid category", "Category not exist", ErrorModel_1.HttpCodes.BAD_REQUEST, false);
+                if (error.httpCode)
+                    throw error;
+                else
+                    throw new ErrorModel_1.default("DB error", error.message, 500, true);
+            }
+            finally {
+                yield this.destroyConnection();
+            }
+        });
+    }
+    createCategory(category) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                yield this.getConnection().insert(category).into(this.table);
+            }
+            catch (error) {
                 if (error.errno === 1062)
                     throw new ErrorModel_1.default('Invalid name', 'name already exist', ErrorModel_1.HttpCodes.ALREADY_EXIST, false);
                 else
@@ -53,62 +59,39 @@ class ItemDb extends BaseDb_1.default {
             }
         });
     }
-    ;
-    getItems() {
+    updateCategory(category) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                return yield this.getConnection().select("*").into(this.table);
+                yield this.getConnection().update({ name: category.name }).where({ id: category.id }).into(this.table);
             }
             catch (error) {
-                throw new ErrorModel_1.default("DB error", error.message, 500, true);
+                if (error.httpCode)
+                    throw error;
+                else
+                    throw new ErrorModel_1.default("DB error", error.message, 500, true);
             }
             finally {
                 yield this.destroyConnection();
             }
         });
     }
-    ;
-    updateItem(item) {
+    deleteCategory(category) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                yield this.getConnection().update(item).where({ id: item.id }).into(this.table);
+                if (category.name === "OTHERS")
+                    throw new ErrorModel_1.default("Invalid category", "cannot delete category OTHERS", ErrorModel_1.HttpCodes.BAD_REQUEST, false);
+                yield this.getConnection().delete().where({ id: category.id }).into(this.table);
             }
             catch (error) {
-                throw new ErrorModel_1.default("DB error", error.message, 500, true);
+                if (error.httpCode)
+                    throw error;
+                else
+                    throw new ErrorModel_1.default("DB error", error.message, 500, true);
             }
             finally {
                 yield this.destroyConnection();
             }
         });
     }
-    ;
-    updateItemsCategory(category) {
-        return __awaiter(this, void 0, void 0, function* () {
-            try {
-                yield this.getConnection().update({ category: "OTHERS" }).where({ category: category.name }).into(this.table);
-            }
-            catch (error) {
-                throw new ErrorModel_1.default("DB error", error.message, 500, true);
-            }
-            finally {
-                yield this.destroyConnection();
-            }
-        });
-    }
-    ;
-    deleteItem(item) {
-        return __awaiter(this, void 0, void 0, function* () {
-            try {
-                yield this.getConnection().delete().where({ id: item.id }).into(this.table);
-            }
-            catch (error) {
-                throw new ErrorModel_1.default("DB error", error.message, 500, true);
-            }
-            finally {
-                yield this.destroyConnection();
-            }
-        });
-    }
-    ;
 }
-exports.default = ItemDb;
+exports.default = CategoryDb;
