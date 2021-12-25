@@ -11,11 +11,11 @@ const helmet_1 = __importDefault(require("helmet"));
 const cors_1 = __importDefault(require("cors"));
 dotenv_1.default.config();
 const app = express_1.default();
+app.use(cors_1.default());
 app.use(express_1.default.json());
 app.use('/', itemRoutes_1.default);
 app.use('/', categoryRoutes_1.default);
 app.use(helmet_1.default());
-app.use(cors_1.default());
 const server = app.listen(process.env.PORT || 3000, () => {
     if (server) {
         const address = server.address();
