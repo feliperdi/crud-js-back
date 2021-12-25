@@ -10,13 +10,9 @@ const categoryBusiness = new CategoryBusiness(new CategoryDb(), new ItemDb());
 
 export default class CategoryController {
 
-    private static verifyKey(auth: string): void {
-        if(auth !== process.env.API_KEY || auth === undefined) throw new ErrorModel("Not authorized","Not authorized", HttpCodes.NOT_AUTHORIZED, false);
-    };
 
    public async getCategory(req: Request, res: Response){
         try {
-            CategoryController.verifyKey(req.header("Authorization") as string);
             const data = await categoryBusiness.getCategory();
             res.status(200).send(data);
         }catch(error: any) {
@@ -26,7 +22,6 @@ export default class CategoryController {
 
     public async createCategory(req: Request, res: Response){
         try {
-            CategoryController.verifyKey(req.header("Authorization") as string);
             const category: CategoryModel = {
                 id: req.body.id,
                 name: req.body.name
@@ -40,7 +35,6 @@ export default class CategoryController {
 
     public async updateCategory(req: Request, res: Response){
         try {
-            CategoryController.verifyKey(req.header("Authorization") as string);
             const category: CategoryModel = {
                 id: req.body.id,
                 name: req.body.name
@@ -55,7 +49,6 @@ export default class CategoryController {
 
     public async deleteCategory(req: Request, res: Response){
         try {
-            CategoryController.verifyKey(req.header("Authorization") as string);
             const category: CategoryModel = {
                 id: req.body.id,
                 name: req.body.name

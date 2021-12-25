@@ -14,14 +14,10 @@ export default class ItemController {
         );
     }
 
-    private static verifyKey(auth: string): void {
-        if(auth !== process.env.API_KEY || auth === undefined) throw new ErrorModel("Not authorized","Not authorized", HttpCodes.NOT_AUTHORIZED, false);
-    };
 
 
     public async getItem(req: Request, res: Response): Promise<void> {
         try {
-            ItemController.verifyKey(req.header("Authorization") as string);
             const business = ItemController.createBusiness();
             const data = await business.getItem();
             res.status(200).send(data);
@@ -36,7 +32,6 @@ export default class ItemController {
 
     public async createItem(req: Request, res: Response): Promise<void> {
         try {
-            ItemController.verifyKey(req.header("Authorization") as string);
             const business = ItemController.createBusiness();
             const item: ItemInputDTO = {
                 name: req.body.name,
@@ -60,7 +55,6 @@ export default class ItemController {
 
     public async updateItem(req: Request, res: Response): Promise<void> {
         try {
-            ItemController.verifyKey(req.header("Authorization") as string);
             const business = ItemController.createBusiness();
             const item: ItemInputDTO = {
                 id: req.body.id,
@@ -84,7 +78,6 @@ export default class ItemController {
 
     public async deleteItem(req: Request, res: Response): Promise<void> {
         try {
-            ItemController.verifyKey(req.header("Authorization") as string);
             const business = ItemController.createBusiness();
             const item: ItemInputDTO = {
                 id: req.body.id,
