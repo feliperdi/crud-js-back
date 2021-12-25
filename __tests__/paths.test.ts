@@ -18,19 +18,19 @@ describe("Testing all ITENS paths", () => {
     };
 
     test("It should response the GET method", async () => {
-        const response = await request(app).get('/').set('Authorization', process.env.API_KEY);
+        const response = await request(app).get('/');
         expect(response.statusCode).toBe(200);
     });
     test("It should response the POST method", async () => {
-        const response = await request(app).post('/').set('Authorization', process.env.API_KEY);
+        const response = await request(app).post('/');
         expect(response.statusCode).toBe(400);
     });
     test("It should response the PUT method", async () => {
-        const response = await request(app).put('/').set('Authorization', process.env.API_KEY);
+        const response = await request(app).put('/');
         expect(response.statusCode).toBe(400);
     });
     test("It should response the DELETE method", async () => {
-        const response = await request(app).delete('/').set('Authorization', process.env.API_KEY);
+        const response = await request(app).delete('/');
         expect(response.statusCode).toBe(400);
     });
 });
@@ -42,20 +42,20 @@ describe("Testing all CATEGORY paths", () => {
     };
 
     test("It should response the GET method", async () => {
-        const response = await request(app).get('/category').set('Authorization', process.env.API_KEY);
+        const response = await request(app).get('/category');
 
         expect(response.statusCode).toBe(200);
     });
     test("It should response the POST method", async () => {
-        const response = await request(app).post('/category').set('Authorization', process.env.API_KEY).set(category);
+        const response = await request(app).post('/category');
         expect(response.statusCode).toBe(400);
     });
     test("It should response the PUT method", async () => {
-        const response = await request(app).put('/category').set('Authorization', process.env.API_KEY).set(category);
+        const response = await request(app).put('/category');
         expect(response.statusCode).toBe(400);
     });
     test("It should response the DELETE method", async () => {
-        const response = await request(app).delete('/category').set('Authorization', process.env.API_KEY).set(category);
+        const response = await request(app).delete('/category');
         expect(response.statusCode).toBe(400);
     });
 });

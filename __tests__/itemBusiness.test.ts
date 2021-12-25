@@ -58,7 +58,6 @@ describe("Errors tests", () => {
         try {
             alterItem = {...mockItemInput};
             alterItem.b_price = undefined;
-
             const itemsList = await itemBusiness.createItem(alterItem);
         } catch (error: any) {
             expect(error.message).toBe('b_price value required');

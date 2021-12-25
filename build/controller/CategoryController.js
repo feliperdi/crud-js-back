@@ -72,7 +72,6 @@ class CategoryController {
                 res.status(200).send(data);
             }
             catch (error) {
-                console.log(error);
                 res.status(error.httpCode).send(error.message);
             }
         });

@@ -56,7 +56,6 @@ export default class CategoryController {
             const data = await categoryBusiness.deleteCategory(category);
             res.status(200).send(data);
         }catch(error: any) {
-            console.log(error);
             res.status(error.httpCode).send(error.message);
         }
     };
