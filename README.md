@@ -19,7 +19,7 @@ This rest API demonstrate some basic  CRUD( create, read, update, delete) operat
 
 ## ENDPOINTS
  <b>URL</b>: https://crud-js-back.herokuapp.com/
- </br>Data format: <b>JSON</b>
+ </br>Data format: <b>JSON</b></br>
  ### GET 
   Return a array of items:</br>
   
@@ -69,6 +69,45 @@ This rest API demonstrate some basic  CRUD( create, read, update, delete) operat
    {
     id: string,
     name: string,
+    stock: number,
+    s_price: number,
+    b_price: string,
+    category: category, // Must exist in the table category.
+    description: string
+   },
+   {
+    id: string,
+    name: string,
+    stock: number,
+    s_price: number,
+    b_price: string,
+    category: category, // Must exist in the table category.
+    description: string
+   } ....
+  ]
+  ```
+  
+  ### UPDATE
+  Edit a existing Item and return a new array of Items.</br>
+ 
+ <b>SEND</b>
+  ```
+   {
+    id: string, 
+    name: "NEW NAME", // <--- UPDATED PROPERTY
+    stock: number,
+    s_price: number,
+    b_price: string,
+    category: category, // Must exist in the table category.
+    description: string
+   }
+  ```
+  <b>RESPONSE</b>
+  ```
+  [
+   {
+    id: string,
+    name: "NEW NAME", // <---  UPDATED PROPERTY
     stock: number,
     s_price: number,
     b_price: string,
