@@ -16,3 +16,25 @@ This rest API demonstrate some basic  CRUD( create, read, update, delete) operat
 
 ### Design Patter:
  + MVC
+
+## ENDPOINTS
+ <b>URL</b>: https://crud-js-back.herokuapp.com/
+ 
+ ### GET 
+  Return a array of items:
+  
+  ```
+  [
+   {
+    id: string,
+    name: string,
+    stock: number,
+    s_price: number,
+    b_price: string,
+    category: category, // Must exist in the table category.
+    description: string
+   }
+  ]
+  ```
+
+
