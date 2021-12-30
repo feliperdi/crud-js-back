@@ -34,7 +34,18 @@ This rest API demonstrate some basic  CRUD( create, read, update, delete) operat
     b_price: string,
     category: category, // Must exist in the table category.
     description: string
-   }
+   },
+   
+   {
+    id: string,
+    name: string,
+    stock: number,
+    s_price: number,
+    b_price: string,
+    category: category, // Must exist in the table category.
+    description: string
+   }.....
+   
   ]
   ```
 ### POST
@@ -55,6 +66,15 @@ This rest API demonstrate some basic  CRUD( create, read, update, delete) operat
   <b>RESPONSE</b>
   ```
   [
+   {
+    id: string,
+    name: string,
+    stock: number,
+    s_price: number,
+    b_price: string,
+    category: category, // Must exist in the table category.
+    description: string
+   },
    {
     id: string,
     name: string,
