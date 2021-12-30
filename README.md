@@ -19,10 +19,11 @@ This rest API demonstrate some basic  CRUD( create, read, update, delete) operat
 
 ## ENDPOINTS
  <b>URL</b>: https://crud-js-back.herokuapp.com/
- 
+ </br>Data format: <b>JSON</b>
  ### GET 
-  Return a array of items:
+  Return a array of items:</br>
   
+  <b>RESPONSE</b>
   ```
   [
    {
@@ -36,5 +37,9 @@ This rest API demonstrate some basic  CRUD( create, read, update, delete) operat
    }
   ]
   ```
-
+### POST
+ Create a new Item and return a new array of Items.</br>
+ 
+ 
+ 
 
