@@ -40,6 +40,31 @@ This rest API demonstrate some basic  CRUD( create, read, update, delete) operat
 ### POST
  Create a new Item and return a new array of Items.</br>
  
- 
+ <b>SEND</b>
+  ```
+   {
+    id: string,
+    name: string,
+    stock: number,
+    s_price: number,
+    b_price: string,
+    category: category, // Must exist in the table category.
+    description: string
+   }
+  ```
+  <b>RESPONSE</b>
+  ```
+  [
+   {
+    id: string,
+    name: string,
+    stock: number,
+    s_price: number,
+    b_price: string,
+    category: category, // Must exist in the table category.
+    description: string
+   } ....
+  ]
+  ```
  
 
