@@ -5,13 +5,14 @@ This rest API demonstrate some basic  CRUD( create, read, update, delete) operat
 ### Status: complete.
 
 ### What have I learn.
- It was a pretty simple to implement this rest API. I did encounter some problems during the way,    but nothing I could solve by myself.  It have helped me increase my confidence in my coding skill.
+ It was a pretty simple to implement this rest API. I did encounter some problems during the way, like what and what not to <b>test</b>, but nothing I could solve by myself.  It have helped me increase my confidence in my coding skill.
 
 ### It was built using:
  + Nodejs
  + Typescript
  + express 
  + knex (Mysql)
+ + Jest
  + Other minor libraries
 
 ### Design Patter:
@@ -125,5 +126,14 @@ This rest API demonstrate some basic  CRUD( create, read, update, delete) operat
    } ....
   ]
   ```
+  ### DELETE 
+   Delete a existing item.
+   
+   <b>SEND</b></br>
+   ```
+   {
+    id: string,   
+   }
+   ```
  
 
