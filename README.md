@@ -19,9 +19,8 @@ This rest API demonstrate some basic  CRUD( create, read, update, delete) operat
  + MVC
 
 ## ENDPOINTS
- <b>URL</b>: https://crud-js-back.herokuapp.com/
  </br>Data format: <b>JSON</b>
- <details><summary>ITEMS</summary>
+ <details><summary>ITEMS ("/")</summary>
  
  ### GET 
   Return a array of items:</br>
@@ -138,4 +137,79 @@ This rest API demonstrate some basic  CRUD( create, read, update, delete) operat
    }
    ```
  </details>
-
+</br>
+<details><summary>CATEGORY ("/category")</summary>
+ 
+  ### GET 
+  Return a array of category:</br>
+  
+  <b>RESPONSE</b>
+  ```
+  [
+   {
+    id: string,
+    name: string,
+   },
+   {
+    id: string,
+    name: string,
+   }.....
+  ]
+  ```
+### POST
+ Create a new category and return a new array of category.</br>
+ 
+ <b>SEND</b>
+  ```
+   {
+    id: string,
+    name: string,
+   }
+  ```
+  <b>RESPONSE</b>
+  ```
+  [
+   {
+    id: string,
+    name: string,
+   },
+   {
+    id: string,
+    name: string,
+   } ....
+  ]
+  ```
+  
+  ### UPDATE
+  Edit a existing category and return a new array of category.</br>
+ 
+ <b>SEND</b>
+  ```
+   {
+    id: string, 
+    name: "NEW NAME", // <--- UPDATED PROPERTY
+   }
+  ```
+  <b>RESPONSE</b>
+  ```
+  [
+   {
+    id: string,
+    name: "NEW NAME", // <---  UPDATED PROPERTY
+   },
+   {
+    id: string,
+    name: string,
+   } ....
+  ]
+  ```
+  ### DELETE 
+   Delete a existing category.
+   
+   <b>SEND</b></br>
+   ```
+   {
+    id: string,   
+   }
+   ```
+</details>
