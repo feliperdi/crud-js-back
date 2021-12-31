@@ -212,3 +212,12 @@ This rest API demonstrate some basic  CRUD( create, read, update, delete) operat
    }
    ```
 </details>
+
+ ### How to run the application:
+ You will need  nodeJs 16.11 and npm to run this application.
+ 
+ 1) run npm install
+ 2) create a new scheme in your mysql
+ 3) config your .env (local variables). see env_exemple for more information.
+ 4) run npm start.
+
