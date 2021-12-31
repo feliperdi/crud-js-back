@@ -137,7 +137,6 @@ This rest API demonstrate some basic  CRUD( create, read, update, delete) operat
    }
    ```
  </details>
-</br>
 <details><summary>CATEGORY ("/category")</summary>
  
   ### GET 
